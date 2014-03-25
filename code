@@ -1,0 +1,137 @@
+
+<style type="text/css">
+* { margin: 0; padding: 0;}
+
+ul.tabs {
+float:left;
+list-style:none;
+height:32px;
+width:100%;
+border-radius:8px 0 -50px 0;
+margin:0;
+padding:0;
+}
+
+ul.tabs li {
+float:left;
+height:31px;
+line-height:31px;
+border:1px solid #999;
+overflow:hidden;
+position:relative;
+background:#e0e0e0;
+-webkit-border-top-left-radius:8px;
+-webkit-border-top-right-radius:8px;
+-moz-border-radius-topleft:8px;
+-moz-border-radius-topright:8px;
+border-top-left-radius:8px;
+border-top-right-radius:8px;
+margin:0 5px -1px 0;
+padding:0;
+}
+
+ul.tabs li a {
+text-decoration:none;
+color:#000;
+display:block;
+font-size:1.2em;
+border:1px solid #fff;
+outline:none;
+-webkit-border-top-left-radius:8px;
+-webkit-border-top-right-radius:8px;
+-moz-border-radius-topleft:8px;
+-moz-border-radius-topright:8px;
+border-top-left-radius:8px;
+border-top-right-radius:8px;
+padding:0 20px;
+}
+
+ul.tabs li a:hover {
+background:#ccc;
+}
+
+html ul.tabs li.active,html ul.tabs li.active a:hover {
+background:#fff;
+border-bottom:1px solid #fff;
+}
+
+.tabContainer {
+border:1px solid #999;
+overflow:hidden;
+clear:both;
+float:left;
+width:100%;
+background:#fff;
+-webkit-border-radius:8px;
+-webkit-border-top-left-radius:0;
+-moz-border-radius:8px;
+-moz-border-radius-topleft:0;
+border-radius:8px;
+border-top-left-radius:0;
+}
+
+.tabContent {
+font-size:1.2em;
+padding:20px;
+}
+pre {
+	background: #f1f1f1;
+	font: 13px "Courier 10 Pitch", Courier, monospace;
+	line-height: 1.5;
+	margin-bottom: 1.625em;
+	overflow: auto;
+	padding: 0.75em 1.625em;
+	color: #000 !important;
+}
+
+</style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	//hiding tab content except first one
+	$(".tabContent").not(":first").hide(); 
+	// adding Active class to first selected tab and show 
+	$("ul.tabs li:first").addClass("active").show();  
+	
+	// Click event on tab
+	$("ul.tabs li").click(function() {
+		// Removing class of Active tab
+		$("ul.tabs li.active").removeClass("active"); 
+		// Adding Active class to Clicked tab
+		$(this).addClass("active"); 
+		// hiding all the tab contents
+		$(".tabContent").hide();		
+		// showing the clicked tab's content using fading effect
+		$($('a',this).attr("href")).fadeIn('slow'); 
+		
+		return false;
+	});
+
+});
+</script>
+
+</head>
+
+<body>
+
+  <ul class="tabs">
+    <li><a href="#tab1">One</a></li>
+    <li><a href="#tab2">Two</a></li>
+ 
+  </ul>
+  <div class="tabContainer">
+    <div id="tab1" class="tabContent">
+      <h2>One</h2>
+      <p>&nbsp;</p>
+    </div>
+    <!-- / END #tab1 -->
+    <div id="tab2" class="tabContent">
+      <h2>Two</h2>
+      <p>&nbsp;</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
